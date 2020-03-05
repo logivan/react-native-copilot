@@ -27,6 +27,7 @@ type Props = {
   labels: Object,
   svgMaskPath?: SvgMaskPathFn,
   stopOnOutsideClick?: boolean,
+  l10n: Object,
 };
 
 type State = {
@@ -40,7 +41,7 @@ type State = {
   },
 };
 
-const noop = () => {};
+const noop = () => { };
 
 class CopilotModal extends Component<Props, State> {
   static defaultProps = {
@@ -289,6 +290,7 @@ class CopilotModal extends Component<Props, State> {
           handlePrev={this.handlePrev}
           handleStop={this.handleStop}
           labels={this.props.labels}
+          l10n={this.props.l10n}
         />
       </Animated.View>,
     ];

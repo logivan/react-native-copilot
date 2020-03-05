@@ -43,6 +43,7 @@ const copilot = ({
   svgMaskPath,
   verticalOffset = 0,
   wrapperStyle,
+  l10n,
 } = {}) =>
   (WrappedComponent) => {
     class Copilot extends Component<any, State> {
@@ -209,6 +210,7 @@ const copilot = ({
               currentStepNumber={this.getStepNumber()}
               currentStep={this.state.currentStep}
               labels={labels}
+              l10n={l10n}
               stepNumberComponent={stepNumberComponent}
               tooltipComponent={tooltipComponent}
               tooltipStyle={tooltipStyle}
