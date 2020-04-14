@@ -53,6 +53,7 @@ const copilot = ({
   l10n,
   arrowColor,
   actionBtnStyle,
+  hideStepNumber = false,
 } = {}) => (WrappedComponent) => {
   class Copilot extends Component<any, State> {
     state = {
@@ -234,6 +235,7 @@ const copilot = ({
             stopOnOutsideClick={stopOnOutsideClick}
             arrowColor={arrowColor}
             actionBtnStyle={actionBtnStyle}
+            hideStepNumber={hideStepNumber}
             ref={(modal) => {
               this.modal = modal;
             }}

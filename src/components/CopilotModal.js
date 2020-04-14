@@ -301,7 +301,7 @@ class CopilotModal extends Component<Props, State> {
           },
         ]}
       >
-        {this.props.hideStepNumber && (
+        {this.props.hideStepNumber === false && (
           <StepNumberComponent
             isFirstStep={this.props.isFirstStep}
             isLastStep={this.props.isLastStep}
