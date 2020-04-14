@@ -48,6 +48,7 @@ const copilot = ({
   stopOnOutsideClick = false,
   svgMaskPath,
   verticalOffset = 0,
+  horizontalOffset = 0,
   wrapperStyle,
   l10n,
   arrowColor,
@@ -196,7 +197,7 @@ const copilot = ({
       await this.modal.animateMove({
         width: size.width + OFFSET_WIDTH,
         height: size.height + OFFSET_WIDTH,
-        left: size.x - OFFSET_WIDTH / 2,
+        left: size.x - OFFSET_WIDTH / 2 + horizontalOffset,
         top: size.y - OFFSET_WIDTH / 2 + verticalOffset,
       });
     }
