@@ -1,12 +1,12 @@
 // @flow
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 
-import Button from './Button';
+import Button from "./Button";
 
-import styles from './style';
+import styles from "./style";
 
-import type { Step } from '../types';
+import type { Step } from "../types";
 
 type Props = {
   isFirstStep: boolean,
@@ -16,6 +16,7 @@ type Props = {
   handleStop: func,
   currentStep: Step,
   labels: Object,
+  actionBtnStyle: Object,
 };
 
 const Tooltip = ({
@@ -27,40 +28,44 @@ const Tooltip = ({
   currentStep,
   labels,
   l10n,
+  actionBtnStyle,
 }: Props) => (
-    <View>
-      <View style={styles.tooltipContainer}>
-        {
-          currentStep.copilotComponent ? <currentStep.copilotComponent /> :
-            <Text testID="stepDescription" style={styles.tooltipText}>{currentStep.text}</Text>
-        }
-      </View>
-      <View style={[styles.bottomBar]}>
-        {
-          !isLastStep ?
-            <TouchableOpacity onPress={handleStop}>
-              <Button>{l10n.skip || 'Skip'}</Button>
-            </TouchableOpacity>
-            : null
-        }
-        {
-          !isFirstStep ?
-            <TouchableOpacity onPress={handlePrev}>
-              <Button>{l10n.previous || 'Previous'}</Button>
-            </TouchableOpacity>
-            : null
-        }
-        {
-          !isLastStep ?
-            <TouchableOpacity onPress={handleNext}>
-              <Button>{l10n.next || 'Next'}</Button>
-            </TouchableOpacity> :
-            <TouchableOpacity onPress={handleStop}>
-              <Button>{l10n.finish || 'Finish'}</Button>
-            </TouchableOpacity>
-        }
-      </View>
+  <View>
+    <View style={styles.tooltipContainer}>
+      {currentStep.copilotComponent ? (
+        <currentStep.copilotComponent />
+      ) : (
+        <Text testID="stepDescription" style={styles.tooltipText}>
+          {currentStep.text}
+        </Text>
+      )}
     </View>
-  );
+    <View style={[styles.bottomBar]}>
+      {!isLastStep ? (
+        <TouchableOpacity onPress={handleStop}>
+          <Button style={actionBtnStyle || {}}>{l10n.skip || "Skip"}</Button>
+        </TouchableOpacity>
+      ) : null}
+      {!isFirstStep ? (
+        <TouchableOpacity onPress={handlePrev}>
+          <Button style={actionBtnStyle || {}}>
+            {l10n.previous || "Previous"}
+          </Button>
+        </TouchableOpacity>
+      ) : null}
+      {!isLastStep ? (
+        <TouchableOpacity onPress={handleNext}>
+          <Button style={actionBtnStyle || {}}>{l10n.next || "Next"}</Button>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={handleStop}>
+          <Button style={actionBtnStyle || {}}>
+            {l10n.finish || "Finish"}
+          </Button>
+        </TouchableOpacity>
+      )}
+    </View>
+  </View>
+);
 
 export default Tooltip;
