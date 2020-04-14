@@ -41,6 +41,7 @@ type Props = {
   svgMaskPath?: SvgMaskPathFn,
   stopOnOutsideClick?: boolean,
   l10n: Object,
+  hideStepNumber: Boolean,
 };
 
 type State = {
@@ -300,12 +301,14 @@ class CopilotModal extends Component<Props, State> {
           },
         ]}
       >
-        <StepNumberComponent
-          isFirstStep={this.props.isFirstStep}
-          isLastStep={this.props.isLastStep}
-          currentStep={this.props.currentStep}
-          currentStepNumber={this.props.currentStepNumber}
-        />
+        {this.props.hideStepNumber && (
+          <StepNumberComponent
+            isFirstStep={this.props.isFirstStep}
+            isLastStep={this.props.isLastStep}
+            currentStep={this.props.currentStep}
+            currentStepNumber={this.props.currentStepNumber}
+          />
+        )}
       </Animated.View>,
       <Animated.View key="arrow" style={[styles.arrow, this.state.arrow]} />,
       <Animated.View
