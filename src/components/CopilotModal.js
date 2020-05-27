@@ -42,6 +42,7 @@ type Props = {
   stopOnOutsideClick?: boolean,
   l10n: Object,
   hideStepNumber: Boolean,
+  forceFirstSkip: Boolean,
 };
 
 type State = {
@@ -55,7 +56,7 @@ type State = {
   },
 };
 
-const noop = () => {};
+const noop = () => { };
 
 class CopilotModal extends Component<Props, State> {
   static defaultProps = {
@@ -324,6 +325,7 @@ class CopilotModal extends Component<Props, State> {
           handleStop={this.handleStop}
           labels={this.props.labels}
           l10n={this.props.l10n}
+          forceFirstSkip={this.props.forceFirstSkip}
           actionBtnStyle={this.props.actionBtnStyle}
         />
       </Animated.View>,
